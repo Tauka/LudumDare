@@ -5,6 +5,7 @@ public class GrenadeController : MonoBehaviour {
 
 	PlayerGrenade grenadeScript;
 	public float throwForce;
+	public float velocity;
 	Rigidbody2D rb;
 
 	bool once = true;
@@ -22,7 +23,9 @@ public class GrenadeController : MonoBehaviour {
 
 			Debug.Log (grenadeScript.throwAngle);
 
-			rb.AddForce (new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce));
+			//rb.AddForce (new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce));
+
+			rb.velocity = new Vector2 (Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * velocity, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * velocity);
 			once = false;
 		}
 
