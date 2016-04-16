@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	Rigidbody2D rb;
+	bool groundCollision = false;
 
 	public float speed;
 	public float jumpForce;
@@ -32,20 +33,24 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Movement()
 	{
-		
+
+		/*if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+			rb.velocity = new Vector2 (Input.GetAxis ("Horizontal") * speed, rb.velocity.y); 
+		}*/
 
 
-
-
-		if (!CheckGround ()) {
+		if (!CheckGround()) {
 
 			//stops by x axis if no input 
 			rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y); 
 
+		} else if (!Input.GetKey(KeyCode.E)){
+			float h = 0;
+			h = Input.GetAxis ("Horizontal");
+			rb.velocity = new Vector2 (h * speed, rb.velocity.y); 
+
 		}
-		else {
-			rb.velocity = new Vector2 (Input.GetAxis ("Horizontal") * speed, rb.velocity.y); 
-		}
+
 	}
 
 	void Jump()
@@ -68,4 +73,9 @@ public class PlayerMovement : MonoBehaviour {
 
 		return false;
 	}
+
+	/*void OnCollisionEnter2D(Collision2D coll) {
+		if (coll.gameObject.tag == "Ground")
+			groundCollision = true;
+	}*/
 }
