@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bullet : MonoBehaviour {
 	Rigidbody2D rb;
-	float speed = 5f;
+	float speed = 10f;
 	// Use this for initialization
 	void Start () 
 	{
@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour {
 	{
 		if( coll.gameObject.tag == "Platform" )
 		{
-			Destroy(this.gameObject, 0);
+//			Destroy(this.gameObject, 0);
 		}
 	}
 }

@@ -35,7 +35,10 @@ public class PlayerGrenade : MonoBehaviour {
 			//throwAngle = 0;
 		}
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 781d0469121715fae20752f370603b809079a5c6
 	void Throwing()
 	{
 		Instantiate (grenadePrefab, new Vector2(transform.position.x + xOffset, transform.position.y + yOffset), Quaternion.identity);

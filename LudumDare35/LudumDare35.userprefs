@@ -1,12 +1,36 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerGrenade.cs">
     <Files>
       <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="37" Column="3" />
       <File FileName="Assets\Scripts\PlayerShoot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Level 1\ShiftGunScript.cs" Line="13" Column="28" />
       <File FileName="Assets\Scripts\GrenadeController.cs" Line="15" Column="19" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlatformBullet\Zplatform.cs">
+    <Files>
+      <File FileName="Assets\Scripts\PlatformBullet\Zplatform.cs" Line="105" Column="27" />
+      <File FileName="Assets\Scripts\PlatformBullet\Xplatform.cs" Line="112" Column="3" />
+      <File FileName="Assets\Scripts\PlatformBullet\Bullet.cs" Line="23" Column="5" />
+      <File FileName="Assets\Scripts\PlatformBullet\Yplatform.cs" Line="82" Column="37" />
+>>>>>>> 781d0469121715fae20752f370603b809079a5c6
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="LudumDare35" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="PlatformBullet" expanded="True">
+                  <Node name="Zplatform.cs" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
