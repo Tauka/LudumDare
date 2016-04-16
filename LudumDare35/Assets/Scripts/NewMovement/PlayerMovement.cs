@@ -39,19 +39,16 @@ public class PlayerMovement : MonoBehaviour {
 		}*/
 
 
-		if (!CheckGround()) {
+		if (!CheckGround ()) {
 
-			//stops by x axis if no input 
 			rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
 
-			if (Input.GetAxisRaw ("Horizontal") != 0) 
-			{
+			if (Input.GetAxisRaw ("Horizontal") != 0) {
 				rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal") * speed, rb.velocity.y); 
 			}
 
-		} else if (!Input.GetKey(KeyCode.E)){
+		} else {
 			rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal") * speed, rb.velocity.y); 
-
 		}
 
 	}
