@@ -12,9 +12,9 @@ public class PlayerGrenade : MonoBehaviour {
 	void Update () {
 	
 	}
-
-	void Throw ()
-	{
-		if (Input.
-	}
+//
+//	void Throw ()
+//	{
+//		if (Input.
+//	}
 }
