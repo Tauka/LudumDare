@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour {
 	public float jumpForce;
 	public float raycastLength;
 
+	[HideInInspector]public bool facingR = true;
+
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D> ();
@@ -22,13 +24,30 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate()
 	{
+		float h = Input.GetAxis ("Horizontal");
+		Flip(h);
 		Movement ();
 		Jump ();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
+	}
+
+	void Flip(float h)
+	{
+		if( h>0 )
+		{
+			transform.localScale = new Vector3(1,1,1);
+			facingR = true;
+		}
+		if( h<0 )
+		{
+			transform.localScale = new Vector3(-1,1,1);
+			facingR = false;
+		}
 	}
 
 	void Movement()

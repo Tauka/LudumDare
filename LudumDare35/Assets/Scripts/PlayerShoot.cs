@@ -7,14 +7,20 @@ public class PlayerShoot : MonoBehaviour {
 	public float bulletOffsetX;
 	public float bulletOffsetY;
 
+	float projectileForwardForce = 50f;
+
+	float lastShot = 0f;
+	float fireRate = 1f;
+
+	PlayerMovement pm;
 	// Use this for initialization
 	void Start () {
-	
+		pm = GetComponent<PlayerMovement>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetAxisRaw("Fire3") != 0)
+		if (Input.GetButtonDown("Fire3"))
 		{
 			Fire ();
 		}
@@ -22,6 +28,20 @@ public class PlayerShoot : MonoBehaviour {
 
 	void Fire()
 	{
-		Instantiate (bullet, new Vector2 (transform.position.x + bulletOffsetX, transform.position.y + bulletOffsetY), Quaternion.identity);
+		GameObject go = null;
+		if( Time.time > fireRate + lastShot )
+		{		
+			go = Instantiate (bullet, new Vector2 (transform.position.x + bulletOffsetX, transform.position.y + bulletOffsetY), Quaternion.identity) as GameObject ;
+			lastShot = Time.time;
+		}
+
+		if( pm.facingR )
+		{
+			go.GetComponent<Rigidbody2D>().AddForce(transform.right*projectileForwardForce, ForceMode2D.Impulse);
+		}
+		else
+		{
+			go.GetComponent<Rigidbody2D>().AddForce(-transform.right*projectileForwardForce, ForceMode2D.Impulse);
+		}
 	}
 }

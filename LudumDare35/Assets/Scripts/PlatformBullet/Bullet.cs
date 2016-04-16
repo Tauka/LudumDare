@@ -13,7 +13,14 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		rb.velocity = new Vector2( speed, 0 );
+//		if(Input.GetAxisRaw("Horizontal") > 0)
+//		{
+//			rb.velocity = new Vector2( speed, 0 );
+//		}
+//		else if(Input.GetAxisRaw("Horizontal") < 0)
+//		{
+//			rb.velocity = new Vector2( -speed, 0 );
+//		}
 	}
 
 	void OnCollisionEnter2D(Collision2D coll)

@@ -3,18 +3,22 @@ using System.Collections;
 
 public class Yplatform : MonoBehaviour 
 {
+	GameObject player;
+
 	bool canChnage = false;
 	bool canMove = true;
 
-	float maxY = 5;
-	float minY = 0.1f;
+	float maxY = 3;
+	float minY = 0.3f;
 	float origin = 1;
-	float offset = 0.0001f;
+	float offset = 0.0005f;
 
 	// Use this for initialization
 	void Start () 
 	{
-		
+		player = GameObject.FindGameObjectWithTag("Player");
+		maxY = transform.localScale.y + 3;
+		origin = transform.localScale.y;
 	}
 	
 	// Update is called once per frame
@@ -24,6 +28,10 @@ public class Yplatform : MonoBehaviour
 		{
 			CancelInvoke();
 			canChnage = false;
+
+			player.GetComponent<PlayerMovement>().enabled = true;
+			player.GetComponent<PlayerGrenade>().enabled = true;
+			player.GetComponent<PlayerShoot>().enabled = true;
 		}
 
 		if( !canChnage && transform.localScale.y != origin )
@@ -48,11 +56,11 @@ public class Yplatform : MonoBehaviour
 		{
 			if(transform.localScale.y-offset >= origin)
 			{
-				transform.localScale = new Vector3( 1, transform.localScale.y - offset, 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y - offset, 1 );
 			}
 			else
 			{
-				transform.localScale = new Vector3( 1, origin, 1 );
+				transform.localScale = new Vector3( transform.localScale.x, origin, 1 );
 			}
 		}
 
@@ -60,11 +68,11 @@ public class Yplatform : MonoBehaviour
 		{
 			if(transform.localScale.y+offset <= origin)
 			{
-				transform.localScale = new Vector3( 1, transform.localScale.y + offset , 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y + offset , 1 );
 			}
 			else
 			{
-				transform.localScale = new Vector3( 1, origin, 1 );
+				transform.localScale = new Vector3( transform.localScale.x, origin, 1 );
 			}
 		}
 	}
@@ -75,7 +83,7 @@ public class Yplatform : MonoBehaviour
 		{
 			if(transform.localScale.y + offset < maxY)
 			{
-				transform.localScale = new Vector3( 1, transform.localScale.y + offset , 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y + offset , 1 );
 			}
 		}
 
@@ -83,7 +91,7 @@ public class Yplatform : MonoBehaviour
 		{
 			if(transform.localScale.y - offset > minY)
 			{
-				transform.localScale = new Vector3( 1, transform.localScale.y - offset , 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y - offset , 1 );
 			}
 		}
 	}
@@ -93,6 +101,10 @@ public class Yplatform : MonoBehaviour
 		if( coll.tag == "Bullet" )
 		{
 			canChnage = true;
+
+			player.GetComponent<PlayerMovement>().enabled = false;
+			player.GetComponent<PlayerGrenade>().enabled = false;
+			player.GetComponent<PlayerShoot>().enabled = false;
 		}
 
 		if( coll.tag == "Platform" )
