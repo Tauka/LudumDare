@@ -4,11 +4,12 @@ using System.Collections;
 public class Yplatform : MonoBehaviour 
 {
 	bool canChnage = false;
+	bool canMove = true;
 
-	float maxX = 5;
-	float minX = 0.1f;
+	float maxY = 5;
+	float minY = 0.1f;
 	float origin = 1;
-	float offset = 0.0005f;
+	float offset = 0.0001f;
 
 	// Use this for initialization
 	void Start () 
@@ -25,12 +26,12 @@ public class Yplatform : MonoBehaviour
 			canChnage = false;
 		}
 
-		if( !canChnage && transform.localScale.x != origin )
+		if( !canChnage && transform.localScale.y != origin )
 		{
-			InvokeRepeating("Return", 0, 0.1f);
+			InvokeRepeating("Return", 0, 0.05f);
 		}
 
-		if( !canChnage && transform.localScale.x == origin )
+		if( !canChnage && transform.localScale.y == origin )
 		{
 			CancelInvoke();
 		}
@@ -43,55 +44,70 @@ public class Yplatform : MonoBehaviour
 
 	void Return()
 	{
-		if( transform.localScale.x > origin )
+		if( transform.localScale.y > origin )
 		{
-			if(transform.localScale.x-offset >= origin)
+			if(transform.localScale.y-offset >= origin)
 			{
-				transform.localScale = new Vector3( transform.localScale.x - offset, 1 , 1 );
+				transform.localScale = new Vector3( 1, transform.localScale.y - offset, 1 );
 			}
 			else
 			{
-				transform.localScale = new Vector3( origin, 1 , 1 );
+				transform.localScale = new Vector3( 1, origin, 1 );
 			}
 		}
 
-		if( transform.localScale.x < origin )
+		if( transform.localScale.y < origin )
 		{
-			if(transform.localScale.x+offset <= origin)
+			if(transform.localScale.y+offset <= origin)
 			{
-				transform.localScale = new Vector3( transform.localScale.x + offset, 1 , 1 );
+				transform.localScale = new Vector3( 1, transform.localScale.y + offset , 1 );
 			}
 			else
 			{
-				transform.localScale = new Vector3( origin, 1 , 1 );
+				transform.localScale = new Vector3( 1, origin, 1 );
 			}
 		}
 	}
 
 	void Scale()
 	{
-		if(Input.GetAxis("Horizontal") > 0)
+		if(Input.GetAxis("Horizontal") > 0 && canMove)
 		{
-			if(transform.localScale.x + offset < maxX)
+			if(transform.localScale.y + offset < maxY)
 			{
-				transform.localScale = new Vector3( transform.localScale.x + offset, 1 , 1 );
+				transform.localScale = new Vector3( 1, transform.localScale.y + offset , 1 );
 			}
 		}
 
-		if(Input.GetAxis("Horizontal") < 0)
+		if(Input.GetAxis("Horizontal") < 0 )
 		{
-			if(transform.localScale.x - offset > minX)
+			if(transform.localScale.y - offset > minY)
 			{
-				transform.localScale = new Vector3( transform.localScale.x - offset, 1 , 1 );
+				transform.localScale = new Vector3( 1, transform.localScale.y - offset , 1 );
 			}
 		}
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
+	void OnTriggerEnter2D(Collider2D coll)
 	{
-		if( coll.gameObject.tag == "Bullet" )
+		if( coll.tag == "Bullet" )
 		{
 			canChnage = true;
+		}
+
+		if( coll.tag == "Platform" )
+		{
+			canMove = false;
+			Debug.Log("Y-Platform");
+		}
+		Debug.Log("Y-CollissionEnter");
+	}
+
+	void OnTriggerExit2D(Collider2D coll)
+	{
+		if( coll.tag == "Platform" )
+		{
+			canMove = true;
 		}
 	}
 }
