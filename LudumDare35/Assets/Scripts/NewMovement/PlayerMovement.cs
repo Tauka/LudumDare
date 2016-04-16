@@ -23,12 +23,12 @@ public class PlayerMovement : MonoBehaviour {
 	void FixedUpdate()
 	{
 		Movement ();
-
+		Jump ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Jump ();
+		
 	}
 
 	void Movement()
@@ -42,12 +42,15 @@ public class PlayerMovement : MonoBehaviour {
 		if (!CheckGround()) {
 
 			//stops by x axis if no input 
-			rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y); 
+			rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
+
+			if (Input.GetAxisRaw ("Horizontal") != 0) 
+			{
+				rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal") * speed, rb.velocity.y); 
+			}
 
 		} else if (!Input.GetKey(KeyCode.E)){
-			float h = 0;
-			h = Input.GetAxis ("Horizontal");
-			rb.velocity = new Vector2 (h * speed, rb.velocity.y); 
+			rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal") * speed, rb.velocity.y); 
 
 		}
 

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GrenadeController : MonoBehaviour {
 
-	public PlayerGrenade grenadeScript;
+	PlayerGrenade grenadeScript;
 	public float throwForce;
 	Rigidbody2D rb;
 
@@ -12,12 +12,16 @@ public class GrenadeController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		rb = GetComponent<Rigidbody2D> ();
+		grenadeScript = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerGrenade>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
 		if (once) {
+
+			Debug.Log (grenadeScript.throwAngle);
+
 			rb.AddForce (new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce));
 			once = false;
 		}

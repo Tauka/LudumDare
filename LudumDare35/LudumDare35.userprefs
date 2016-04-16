@@ -1,15 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewMovement\PlayerMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerGrenade.cs">
     <Files>
-      <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="85" Column="2" />
-      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="18" Column="5" />
+      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="37" Column="3" />
+      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Level 1\ShiftGunScript.cs" Line="13" Column="28" />
+      <File FileName="Assets\Scripts\GrenadeController.cs" Line="15" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-=======
-  <MonoDevelop.Ide.Workbench />
->>>>>>> 6c98074d6af10818ebff0f3e2c8b637aae924fb6
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
