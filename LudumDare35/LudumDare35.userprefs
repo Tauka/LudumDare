@@ -1,9 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Yplatform.cs">
     <Files>
       <File FileName="Assets\Scripts\Yplatform.cs" Line="23" Column="4" />
       <File FileName="Assets\Scripts\Bullet.cs" Line="25" Column="3" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewMovement\PlayerMovement.cs">
+    <Files>
+      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="18" Column="13" />
+      <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="53" Column="7" />
+>>>>>>> 415e7356583f25be68dd129809ee9c0fb415b183
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
