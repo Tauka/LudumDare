@@ -6,9 +6,11 @@ public class Yplatform : MonoBehaviour
 	bool canChnage = false;
 	bool canMove = true;
 	bool fastChange = false;
-	bool playerIn = false;
 
-	public float force = 100f;
+	bool playerIn = false;
+	bool setUp = false;
+
+	public float force = 0.001f;
 	public float maxY = 3;
 	public float minY = 0.3f;
 	float origin = 1;
@@ -41,17 +43,30 @@ public class Yplatform : MonoBehaviour
 			CancelInvoke();
 			fastChange = true;
 			canChnage = false;
+
+			if( transform.localScale.y < origin )
+			{
+				Debug.Log("Ready to throw");
+				setUp = true;
+			}
 		}
 
 		if( fastChange && !canChnage && transform.localScale.y != origin )
 		{
-			Debug.Log("Ctrl");
 			InvokeRepeating("Return", 0, 0.0001f);
 		}
 
 		if( !canChnage && transform.localScale.y == origin )
 		{
 			CancelInvoke();
+			Debug.Log("Before AddForce");
+		}
+
+		if( playerIn && setUp && transform.localScale.y == origin )
+		{
+			GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, force), ForceMode2D.Impulse );
+			setUp = false;
+			Debug.Log("AddForce");
 		}
 
 		if( canChnage )
@@ -127,6 +142,7 @@ public class Yplatform : MonoBehaviour
 		if( coll.tag == "Player" )
 		{
 			playerIn = true;
+			Debug.Log("See player");
 		}
 		Debug.Log("Y-CollissionEnter");
 	}

@@ -8,8 +8,15 @@ public class Zplatform : MonoBehaviour
 	bool canMoveL = true;
 	bool fastChange = false;
 
+	bool playerIn = false;
+	bool setUp = false;
+	bool flyPos = false;
+	bool flyNeg = false;
+
 	float origin = 0f;
 	float offset = 0.5f;
+
+	public float force = 8;
 
 	// Use this for initialization
 	void Start () 
@@ -36,6 +43,29 @@ public class Zplatform : MonoBehaviour
 			CancelInvoke();
 			fastChange = true;
 			canChnage = false;
+
+			if( (transform.localEulerAngles.z < origin  && flyNeg) || (transform.localEulerAngles.z > origin  && flyPos))
+			{
+				Debug.Log("Ready to throw");
+				setUp = true;
+			}
+		}
+
+		if( playerIn )
+		{
+			GameObject p = GameObject.FindGameObjectWithTag("Player");
+
+			if( p.transform.position.x - transform.position.x < -0.5 )
+			{
+				flyPos = true;
+				flyNeg = false;
+			}
+
+			if (p.transform.position.x - transform.position.x > 0.5 )
+			{
+				flyNeg = true;
+				flyPos = false;
+			}
 		}
 
 		if( fastChange && !canChnage && transform.localScale.y != origin )
@@ -47,6 +77,25 @@ public class Zplatform : MonoBehaviour
 		if( !canChnage && transform.localEulerAngles.z == origin )
 		{
 			CancelInvoke();
+		}
+
+		if( playerIn && setUp && (transform.localEulerAngles.z%360) == origin )
+		{
+			Rigidbody2D pRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+			if( flyPos )
+			{
+				pRB.AddForce(new Vector2(force, force), ForceMode2D.Impulse );
+			}
+
+			if( flyNeg )
+			{
+				pRB.AddForce(new Vector2((-1)*force, force), ForceMode2D.Impulse );
+			}
+
+			setUp = false;
+			flyNeg = false;
+			flyPos = false;
+			Debug.Log("AddForce");
 		}
 
 		if( canChnage )
@@ -120,6 +169,13 @@ public class Zplatform : MonoBehaviour
 			Debug.Log("Right");
 		}
 
+		if( coll.tag == "Player" )
+		{
+			playerIn = true;
+			Debug.Log("See player");
+		}
+		Debug.Log("Z-CollissionEnter");
+
 		Debug.Log("CollissionEnter");
 	}
 
@@ -129,6 +185,10 @@ public class Zplatform : MonoBehaviour
 		{
 			canMoveL = true;
 			canMoveR = true;
+		}
+		if( coll.tag == "Player" )
+		{
+			playerIn = false;
 		}
 	}
 }
