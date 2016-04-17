@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerGrenade : MonoBehaviour {
 
 	public float maxAngle;
-	public float minAngle;
+	//public float minAngle;
 	public float angleChangeSpeed;
-	[HideInInspector] public float throwAngle;
-	[HideInInspector] public float side;
+	public float velocityChangeSpeed;
+	public float maxVelocity;
+	public float maxExplosionTime;
+	//public float minVelocity;
+	 public float throwAngle;
+	 public float side;
+ public float vel = 5;
+	public float explosionTime = 1;
+	[HideInInspector] public float timerAppearTime = 2;
 	public float xOffset;
 	public float yOffset;
 
@@ -15,6 +23,9 @@ public class PlayerGrenade : MonoBehaviour {
 	//DrawTrajectory trajectory;
 	LineRenderer line;
 	PlayerMovement movement;
+	Text timerText;
+
+	bool coroutineFinish = true;
 
 	public GameObject grenadePrefab;
 
@@ -24,11 +35,14 @@ public class PlayerGrenade : MonoBehaviour {
 		//trajectory = GetComponent<DrawTrajectory> ();
 		line = GetComponent<LineRenderer> ();
 		movement = GetComponent<PlayerMovement> ();
+
+		//we can do this, since there's only one child, and only on grandchild
+		timerText = this.transform.GetChild(0).GetComponentInChildren<Text>();
+
 	}
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
@@ -47,8 +61,16 @@ public class PlayerGrenade : MonoBehaviour {
 			rb.velocity = Vector2.zero;
 			movement.enabled = false;
 
+			
+			TimerChange (timerText, timerAppearTime);
+
 			//if (Input.GetKey (KeyCode.A)) {
 			throwAngle = (throwAngle + angleChangeSpeed * Input.GetAxis("Horizontal") * transform.localScale.x * -1) % maxAngle;
+			vel = Mathf.Abs((vel + velocityChangeSpeed * Input.GetAxis ("Vertical")) % maxVelocity);
+
+			//change explosion time
+
+
 			//} else if (Input.GetKey (KeyCode.D)) {
 			//	throwAngle = (throwAngle - angleChangeSpeed) % minAngle;
 			//}
@@ -69,7 +91,33 @@ public class PlayerGrenade : MonoBehaviour {
 	{
 		//this prevents glitches with throwing at other direction, when in GrenadeController I directly use localScale.x
 		side = transform.localScale.x;
-		Instantiate (grenadePrefab, new Vector2(transform.position.x + xOffset, transform.position.y + yOffset), Quaternion.identity);
+		Instantiate (grenadePrefab, new Vector2(transform.position.x + xOffset * transform.localScale.x, transform.position.y + yOffset), Quaternion.identity);
+	}
+
+	void TimerChange(Text timerTex, float timerApp)
+	{
+		if (Input.GetKeyDown (KeyCode.Q)) {
+			explosionTime = ((explosionTime + 1) % maxExplosionTime);
+
+			timerTex.text = explosionTime.ToString ();
+			coroutineFinish = false;
+		}
+
+		//if time is expired text, disappears
+
+
+		if (!coroutineFinish)
+			StartCoroutine (TextEraser (timerTex, timerApp));
+		else
+			StopCoroutine (TextEraser(timerTex, timerApp));
+	}
+
+	IEnumerator TextEraser(Text textuwka, float time)
+	{
+		yield return new WaitForSeconds(time);
+
+		textuwka.text = "";
+		coroutineFinish = true;
 	}
 
 	/*void DrawTraject(Vector2 startPos, Vector2 startVelocity, float angle, float force){

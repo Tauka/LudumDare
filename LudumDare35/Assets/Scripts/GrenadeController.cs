@@ -7,7 +7,7 @@ public class GrenadeController : MonoBehaviour {
 	//public float throwForce;
 	public float velocity;
 	public float explosionRadius;
-	public float explosionTime;
+	//public float explosionTime;
 	Rigidbody2D rb;
 	CircleCollider2D[] explosion;
 	GameObject player;
@@ -36,7 +36,7 @@ public class GrenadeController : MonoBehaviour {
 
 			//rb.AddForce (new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce));
 
-			rb.velocity = new Vector2 (Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * velocity * grenadeScript.side, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * velocity);
+			rb.velocity = new Vector2 (Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * grenadeScript.vel * grenadeScript.side, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * grenadeScript.vel);
 			once = false;
 		}
 
@@ -46,11 +46,15 @@ public class GrenadeController : MonoBehaviour {
 
 	void Update()
 	{
-		if (explosionTime < currentTime) {
+		if (grenadeScript.explosionTime < currentTime) {
 			currentTime += Time.deltaTime;
 		} else {
 			foreach (CircleCollider2D expl in explosion) {
 				if (expl.isTrigger) {
+
+					//change tag
+					this.gameObject.tag = "Bullet";
+
 					expl.radius = explosionRadius;
 				}
 			}

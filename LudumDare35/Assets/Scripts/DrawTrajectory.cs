@@ -24,7 +24,7 @@ public class DrawTrajectory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		DrawTraject (new Vector2 (transform.position.x + grenade.xOffset, transform.position.y + grenade.yOffset), new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenade.throwAngle) * velocity * transform.localScale.x, Mathf.Sin (Mathf.Deg2Rad * grenade.throwAngle) * velocity));
+		DrawTraject (new Vector2 (transform.position.x + grenade.xOffset * transform.localScale.x, transform.position.y + grenade.yOffset), new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenade.throwAngle) * grenade.vel * transform.localScale.x, Mathf.Sin (Mathf.Deg2Rad * grenade.throwAngle) * grenade.vel));
 	}
 
 	void DrawTraject(Vector2 startPos, Vector2 velocity){
