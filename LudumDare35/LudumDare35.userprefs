@@ -1,22 +1,13 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\DrawTrajectory.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerGrenade.cs">
     <Files>
-      <File FileName="Assets\Scripts\LineScript.cs" Line="19" Column="3" />
-      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="46" Column="31" />
-      <File FileName="Assets\Scripts\DrawTrajectory.cs" Line="53" Column="4" />
-      <File FileName="Assets\Scripts\GrenadeController.cs" Line="28" Column="4" />
-      <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="50" Column="4" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerShoot.cs">
-    <Files>
-      <File FileName="Assets\Scripts\PlatformBullet\Xplatform.cs" Line="6" Column="1" />
-      <File FileName="Assets\Scripts\PlatformBullet\Yplatform.cs" Line="14" Column="23" />
-      <File FileName="Assets\Scripts\Controller.cs" Line="6" Column="9" />
-      <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="49" Column="20" />
-      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="10" Column="35" />
->>>>>>> 21ea5220837dd394139b9fec6b6261ac7535e7fc
+      <File FileName="Assets\Scripts\PlatformBullet\Yplatform.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\DrawTrajectory.cs" Line="12" Column="16" />
+      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="51" Column="107" />
+      <File FileName="Assets\Scripts\GrenadeController.cs" Line="31" Column="23" />
+      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="23" Column="22" />
+      <File FileName="Assets\Scripts\Level 1\ShiftGunScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

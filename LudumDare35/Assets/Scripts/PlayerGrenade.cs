@@ -6,7 +6,8 @@ public class PlayerGrenade : MonoBehaviour {
 	public float maxAngle;
 	public float minAngle;
 	public float angleChangeSpeed;
-	public float throwAngle;
+	[HideInInspector] public float throwAngle;
+	[HideInInspector] public float side;
 	public float xOffset;
 	public float yOffset;
 
@@ -46,11 +47,11 @@ public class PlayerGrenade : MonoBehaviour {
 			rb.velocity = Vector2.zero;
 			movement.enabled = false;
 
-			if (Input.GetKey (KeyCode.A)) {
-				throwAngle = (throwAngle + angleChangeSpeed) % maxAngle;
-			} else if (Input.GetKey (KeyCode.D)) {
-				throwAngle = (throwAngle - angleChangeSpeed) % minAngle;
-			}
+			//if (Input.GetKey (KeyCode.A)) {
+			throwAngle = (throwAngle + angleChangeSpeed * Input.GetAxis("Horizontal") * transform.localScale.x * -1) % maxAngle;
+			//} else if (Input.GetKey (KeyCode.D)) {
+			//	throwAngle = (throwAngle - angleChangeSpeed) % minAngle;
+			//}
 		} else if (Input.GetKeyUp (KeyCode.E)) {
 
 			//disable trajectory
@@ -63,12 +64,11 @@ public class PlayerGrenade : MonoBehaviour {
 			//throwAngle = 0;
 		}
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> 21ea5220837dd394139b9fec6b6261ac7535e7fc
 	void Throwing()
 	{
+		//this prevents glitches with throwing at other direction, when in GrenadeController I directly use localScale.x
+		side = transform.localScale.x;
 		Instantiate (grenadePrefab, new Vector2(transform.position.x + xOffset, transform.position.y + yOffset), Quaternion.identity);
 	}
 

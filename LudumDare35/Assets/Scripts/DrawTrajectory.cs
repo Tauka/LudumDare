@@ -9,6 +9,7 @@ public class DrawTrajectory : MonoBehaviour {
 	Rigidbody2D rb;
 	LineRenderer line;
 	Renderer rend;
+	[HideInInspector] public Vector2[] positions;
 
 	//Draw texture for circlic trajectory
 	public Texture texture;
@@ -23,12 +24,12 @@ public class DrawTrajectory : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		DrawTraject (new Vector2 (transform.position.x + grenade.xOffset, transform.position.y + grenade.yOffset), new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenade.throwAngle) * velocity, Mathf.Sin (Mathf.Deg2Rad * grenade.throwAngle) * velocity));
+		DrawTraject (new Vector2 (transform.position.x + grenade.xOffset, transform.position.y + grenade.yOffset), new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenade.throwAngle) * velocity * transform.localScale.x, Mathf.Sin (Mathf.Deg2Rad * grenade.throwAngle) * velocity));
 	}
 
 	void DrawTraject(Vector2 startPos, Vector2 velocity){
 
-		Vector2 a = new Vector2(Physics.gravity.x, Physics.gravity.y);
+		Vector2 a = new Vector2(rb.gravityScale * Physics.gravity.x, rb.gravityScale * Physics.gravity.y);
 
 		//quite inefficient
 		//check how many vertices we need
@@ -44,7 +45,7 @@ public class DrawTrajectory : MonoBehaviour {
 
 		int verts = numOfVert;
 		line.SetVertexCount(verts);
-		Vector2[] positions = new Vector2[verts];
+		positions = new Vector2[verts];
 
 		Vector2 pos = startPos;
 		Vector2 vel = velocity;
