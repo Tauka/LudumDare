@@ -1,4 +1,11 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
+<<<<<<< HEAD
 
 Quitting shader compiler process
+=======
+Cmd: preprocess
+  insize=1013 outsize=1566 ok=1
+Cmd: preprocess
+  insize=1013 outsize=1566 ok=1
+>>>>>>> 03f76eba1f671c9a8b04a649dfdcdb165ed0e84e
