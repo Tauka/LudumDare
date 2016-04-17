@@ -24,9 +24,18 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		float h = Input.GetAxis ("Horizontal");
-		Flip(h);
-		Movement ();
+		//float h = Input.GetAxis ("Horizontal");
+
+		float side = 0;
+		if (Input.GetKey (KeyCode.A)) {
+			side = -1;
+		} 
+		else if (Input.GetKey (KeyCode.D)){
+			side = 1;
+		}
+
+		Flip(side);
+		Movement (side);
 		Jump ();
 	}
 	
@@ -50,24 +59,23 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	void Movement()
+	void Movement(float s)
 	{
 
 		/*if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
 			rb.velocity = new Vector2 (Input.GetAxis ("Horizontal") * speed, rb.velocity.y); 
 		}*/
 
-
 		if (!CheckGround ()) {
 
 			rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y);
 
 			if (Input.GetAxisRaw ("Horizontal") != 0) {
-				rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal") * speed, rb.velocity.y); 
+				rb.velocity = new Vector2 (s * speed, rb.velocity.y); 
 			}
 
 		} else {
-			rb.velocity = new Vector2 (Input.GetAxisRaw ("Horizontal") * speed, rb.velocity.y); 
+			rb.velocity = new Vector2 (s * speed, rb.velocity.y); 
 		}
 
 	}
