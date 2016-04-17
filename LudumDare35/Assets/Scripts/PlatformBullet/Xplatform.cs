@@ -9,12 +9,11 @@ public class Xplatform : MonoBehaviour
 	float maxX = 3;
 	float minX = 0.3f;
 	float origin = 1;
-	float offset = 0.0001f;
+	float offset = 0.01f;
 
 	// Use this for initialization
 	void Start () 
 	{
-		
 		maxX = transform.localScale.x + 3;
 		origin = transform.localScale.x;
 	}
@@ -22,7 +21,7 @@ public class Xplatform : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if( Input.GetKey(KeyCode.K) )
+		if( Input.GetKey(KeyCode.LeftShift) )
 		{
 			CancelInvoke();
 			canChnage = false;
@@ -50,7 +49,7 @@ public class Xplatform : MonoBehaviour
 		{
 			if(transform.localScale.x-offset >= origin)
 			{
-				transform.localScale = new Vector3( transform.localScale.x - offset, transform.localScale.y , 1 );
+				transform.localScale = new Vector3( transform.localScale.x - offset*Time.deltaTime, transform.localScale.y , 1 );
 			}
 			else
 			{
@@ -62,7 +61,7 @@ public class Xplatform : MonoBehaviour
 		{
 			if(transform.localScale.x+offset <= origin)
 			{
-				transform.localScale = new Vector3( transform.localScale.x + offset,  transform.localScale.y , 1 );
+				transform.localScale = new Vector3( transform.localScale.x + offset*Time.deltaTime,  transform.localScale.y , 1 );
 			}
 			else
 			{
@@ -73,19 +72,19 @@ public class Xplatform : MonoBehaviour
 
 	void Scale()
 	{
-		if(Input.GetAxis("Horizontal") > 0)
+		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			if(transform.localScale.x + offset < maxX && canMove)
 			{
-				transform.localScale = new Vector3( transform.localScale.x + offset,  transform.localScale.y , 1 );
+				transform.localScale = new Vector3( transform.localScale.x + offset*Time.deltaTime,  transform.localScale.y , 1 );
 			}
 		}
 
-		if(Input.GetAxis("Horizontal") < 0)
+		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			if(transform.localScale.x - offset > minX)
 			{
-				transform.localScale = new Vector3( transform.localScale.x - offset, transform.localScale.y , 1 );
+				transform.localScale = new Vector3( transform.localScale.x - offset*Time.deltaTime, transform.localScale.y , 1 );
 			}
 		}
 	}

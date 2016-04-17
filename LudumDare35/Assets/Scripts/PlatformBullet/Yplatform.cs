@@ -3,40 +3,50 @@ using System.Collections;
 
 public class Yplatform : MonoBehaviour 
 {
-	GameObject player;
-
 	bool canChnage = false;
 	bool canMove = true;
+	bool fastChange = false;
+	bool playerIn = false;
 
-	float maxY = 3;
-	float minY = 0.3f;
+	public float force = 100f;
+	public float maxY = 3;
+	public float minY = 0.3f;
 	float origin = 1;
-	float offset = 0.0005f;
+	float offset = 0.01f;
+
 
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.FindGameObjectWithTag("Player");
-		maxY = transform.localScale.y + 3;
+		maxY = transform.localScale.y + maxY;
 		origin = transform.localScale.y;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if( Input.GetKey(KeyCode.K) )
+		if( Input.GetKey(KeyCode.LeftShift) )
 		{
 			CancelInvoke();
 			canChnage = false;
-
-			player.GetComponent<PlayerMovement>().enabled = true;
-			player.GetComponent<PlayerGrenade>().enabled = true;
-			player.GetComponent<PlayerShoot>().enabled = true;
 		}
 
 		if( !canChnage && transform.localScale.y != origin )
 		{
 			InvokeRepeating("Return", 0, 0.05f);
+		}
+
+		if( Input.GetKey(KeyCode.LeftControl) )
+		{
+			CancelInvoke();
+			fastChange = true;
+			canChnage = false;
+		}
+
+		if( fastChange && !canChnage && transform.localScale.y != origin )
+		{
+			Debug.Log("Ctrl");
+			InvokeRepeating("Return", 0, 0.0001f);
 		}
 
 		if( !canChnage && transform.localScale.y == origin )
@@ -52,11 +62,16 @@ public class Yplatform : MonoBehaviour
 
 	void Return()
 	{
+		float ch = offset;
+		if( fastChange )
+		{
+			ch = 100 * offset;
+		}
 		if( transform.localScale.y > origin )
 		{
-			if(transform.localScale.y-offset >= origin)
+			if(transform.localScale.y-ch >= origin)
 			{
-				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y - offset, 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y - ch*Time.deltaTime, 1 );
 			}
 			else
 			{
@@ -66,9 +81,9 @@ public class Yplatform : MonoBehaviour
 
 		if( transform.localScale.y < origin )
 		{
-			if(transform.localScale.y+offset <= origin)
+			if(transform.localScale.y+ch <= origin)
 			{
-				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y + offset , 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y + ch*Time.deltaTime , 1 );
 			}
 			else
 			{
@@ -79,19 +94,19 @@ public class Yplatform : MonoBehaviour
 
 	void Scale()
 	{
-		if(Input.GetAxis("Horizontal") > 0 && canMove)
+		if(Input.GetKey(KeyCode.RightArrow) && canMove)
 		{
 			if(transform.localScale.y + offset < maxY)
 			{
-				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y + offset , 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y + offset*Time.deltaTime, 1 );
 			}
 		}
 
-		if(Input.GetAxis("Horizontal") < 0 )
+		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			if(transform.localScale.y - offset > minY)
 			{
-				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y - offset , 1 );
+				transform.localScale = new Vector3( transform.localScale.x, transform.localScale.y - offset*Time.deltaTime , 1 );
 			}
 		}
 	}
@@ -101,16 +116,17 @@ public class Yplatform : MonoBehaviour
 		if( coll.tag == "Bullet" )
 		{
 			canChnage = true;
-
-			player.GetComponent<PlayerMovement>().enabled = false;
-			player.GetComponent<PlayerGrenade>().enabled = false;
-			player.GetComponent<PlayerShoot>().enabled = false;
 		}
 
 		if( coll.tag == "Platform" )
 		{
 			canMove = false;
 			Debug.Log("Y-Platform");
+		}
+
+		if( coll.tag == "Player" )
+		{
+			playerIn = true;
 		}
 		Debug.Log("Y-CollissionEnter");
 	}
@@ -120,6 +136,10 @@ public class Yplatform : MonoBehaviour
 		if( coll.tag == "Platform" )
 		{
 			canMove = true;
+		}
+		if( coll.tag == "Player" )
+		{
+			playerIn = false;
 		}
 	}
 }

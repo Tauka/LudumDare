@@ -6,9 +6,10 @@ public class Zplatform : MonoBehaviour
 	bool canChnage = false;
 	bool canMoveR = true;
 	bool canMoveL = true;
+	bool fastChange = false;
 
 	float origin = 0f;
-	float offset = 0.01f;
+	float offset = 0.5f;
 
 	// Use this for initialization
 	void Start () 
@@ -19,7 +20,7 @@ public class Zplatform : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		if( Input.GetKey(KeyCode.K) )
+		if( Input.GetKey(KeyCode.LeftShift) )
 		{
 			CancelInvoke();
 			canChnage = false;
@@ -28,6 +29,19 @@ public class Zplatform : MonoBehaviour
 		if( !canChnage && transform.localEulerAngles.z != origin )
 		{
 			InvokeRepeating("Return", 0f, 0.05f);
+		}
+
+		if( Input.GetKey(KeyCode.LeftControl) )
+		{
+			CancelInvoke();
+			fastChange = true;
+			canChnage = false;
+		}
+
+		if( fastChange && !canChnage && transform.localScale.y != origin )
+		{
+			Debug.Log("Ctrl");
+			InvokeRepeating("Return", 0, 0.0001f);
 		}
 
 		if( !canChnage && transform.localEulerAngles.z == origin )
@@ -43,11 +57,17 @@ public class Zplatform : MonoBehaviour
 
 	void Return()
 	{
+		float ch = offset;
+		if( fastChange )
+		{
+			ch = 50 * offset;
+		}
+
 		if( ((transform.eulerAngles.z % 360) / 180) <= 1 )
 		{
-			if(((transform.eulerAngles.z - offset)%360) >= origin)
+			if(((transform.eulerAngles.z - ch)%360) >= origin)
 			{
-				transform.localEulerAngles = new Vector3( 0f, 0f, transform.localEulerAngles.z - offset );
+				transform.localEulerAngles = new Vector3( 0f, 0f, transform.localEulerAngles.z - ch*Time.deltaTime );
 			}
 			else
 			{
@@ -57,9 +77,9 @@ public class Zplatform : MonoBehaviour
 
 		if( ((transform.eulerAngles.z % 360) / 180) > 1 )
 		{
-			if(((transform.eulerAngles.z + offset)%360) >= origin)
+			if(((transform.eulerAngles.z + ch)%360) >= origin)
 			{
-				transform.localEulerAngles = new Vector3( 0f, 0f, transform.localEulerAngles.z + offset );
+				transform.localEulerAngles = new Vector3( 0f, 0f, transform.localEulerAngles.z + ch*Time.deltaTime  );
 			}
 			else
 			{
@@ -70,14 +90,14 @@ public class Zplatform : MonoBehaviour
 
 	void Scale()
 	{
-		if(Input.GetAxis("Horizontal") > 0 && canMoveR )
+		if(Input.GetKey(KeyCode.LeftArrow) && canMoveR )
 		{
-			transform.localEulerAngles = new Vector3( 0f, 0f, transform.localEulerAngles.z + offset);
+			transform.localEulerAngles = new Vector3( 0f, 0f, transform.localEulerAngles.z + offset*Time.deltaTime );
 		}
 
-		if(Input.GetAxis("Horizontal") < 0 && canMoveL )
+		if(Input.GetKey(KeyCode.RightArrow) && canMoveL )
 		{
-			transform.localEulerAngles = new Vector3( 0f, 0f,  transform.localEulerAngles.z - offset);
+			transform.localEulerAngles = new Vector3( 0f, 0f,  transform.localEulerAngles.z - offset*Time.deltaTime );
 		}
 	}
 
@@ -88,13 +108,13 @@ public class Zplatform : MonoBehaviour
 			canChnage = true;
 		}
 
-		if( coll.tag == "Platform" && Input.GetAxis("Horizontal") < 0)
+		if( coll.tag == "Platform" && Input.GetKey(KeyCode.RightArrow))
 		{
 			canMoveL = false;
 			Debug.Log("Left");
 		}
 
-		if( coll.tag == "Platform" && Input.GetAxis("Horizontal") > 0)
+		if( coll.tag == "Platform" && Input.GetKey(KeyCode.LeftArrow))
 		{
 			canMoveR = false;
 			Debug.Log("Right");
