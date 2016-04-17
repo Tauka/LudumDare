@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\LineRendererDottedLIne.cs" />
      <Compile Include="Assets\Scripts\LineScript.cs" />
      <Compile Include="Assets\Scripts\NewMovement\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\NextLevel.cs" />
      <Compile Include="Assets\Scripts\Old Scripts\AI\AI.cs" />
      <Compile Include="Assets\Scripts\Old Scripts\AI\AlertState.cs" />
      <Compile Include="Assets\Scripts\Old Scripts\AI\AttackState.cs" />

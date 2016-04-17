@@ -43,25 +43,19 @@ public class Zplatform : MonoBehaviour
 			CancelInvoke();
 			fastChange = true;
 			canChnage = false;
-
-			if( (transform.localEulerAngles.z < origin  && flyNeg) || (transform.localEulerAngles.z > origin  && flyPos))
-			{
-				Debug.Log("Ready to throw");
-				setUp = true;
-			}
 		}
 
 		if( playerIn )
 		{
 			GameObject p = GameObject.FindGameObjectWithTag("Player");
 
-			if( p.transform.position.x - transform.position.x < -0.5 )
+			if( p.transform.position.x - transform.position.x < 0  && transform.rotation.z > 0 && transform.rotation.z < 90 )
 			{
 				flyPos = true;
 				flyNeg = false;
 			}
 
-			if (p.transform.position.x - transform.position.x > 0.5 )
+			if(p.transform.position.x - transform.position.x > 0 && transform.rotation.z > -90 && transform.rotation.z < 0)
 			{
 				flyNeg = true;
 				flyPos = false;
@@ -76,11 +70,33 @@ public class Zplatform : MonoBehaviour
 
 		if( !canChnage && transform.localEulerAngles.z == origin )
 		{
-			CancelInvoke();
+			if(!fastChange)
+			{
+				CancelInvoke();
+			}
+			else
+			{
+				CancelInvoke();
+				fastChange = false;
+				Fly();
+			}
 		}
 
-		if( playerIn && setUp && (transform.localEulerAngles.z%360) == origin )
+
+		if( canChnage )
 		{
+			InvokeRepeating("Scale", 0f, 0.05f);
+		}
+	}
+
+	void Fly()
+	{
+
+		if( playerIn && (transform.localEulerAngles.z%360) == origin )
+		{
+			Debug.Log("FlyPos = " + flyPos);
+			Debug.Log("FlyNeg = " + flyNeg);
+
 			Rigidbody2D pRB = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
 			if( flyPos )
 			{
@@ -96,11 +112,6 @@ public class Zplatform : MonoBehaviour
 			flyNeg = false;
 			flyPos = false;
 			Debug.Log("AddForce");
-		}
-
-		if( canChnage )
-		{
-			InvokeRepeating("Scale", 0f, 0.05f);
 		}
 	}
 
