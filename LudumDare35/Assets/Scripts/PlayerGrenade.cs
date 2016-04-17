@@ -13,9 +13,9 @@ public class PlayerGrenade : MonoBehaviour {
 	//public float minVelocity;
 	 public float throwAngle;
 	 public float side;
- public float vel = 5;
+ 	public float vel = 5;
 	public float explosionTime = 1;
-	[HideInInspector] public float timerAppearTime = 2;
+	[HideInInspector] public float timerAppearTime = 0.5f;
 	public float xOffset;
 	public float yOffset;
 
@@ -24,6 +24,7 @@ public class PlayerGrenade : MonoBehaviour {
 	LineRenderer line;
 	PlayerMovement movement;
 	Text timerText;
+	public float timer = 0;
 
 	bool coroutineFinish = true;
 
@@ -43,11 +44,13 @@ public class PlayerGrenade : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//timer = timerAppearTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Aim ();
+		TextChange (timerText, timerAppearTime);
 	}
 
 	void Aim ()
@@ -62,12 +65,12 @@ public class PlayerGrenade : MonoBehaviour {
 			movement.enabled = false;
 
 			
-			TimerChange (timerText, timerAppearTime);
+
 
 			//if (Input.GetKey (KeyCode.A)) {
-			throwAngle = (throwAngle + angleChangeSpeed * Input.GetAxis("Horizontal") * transform.localScale.x * -1) % maxAngle;
-			vel = Mathf.Abs((vel + velocityChangeSpeed * Input.GetAxis ("Vertical")) % maxVelocity);
-
+			throwAngle = Mathf.Clamp((throwAngle + angleChangeSpeed * Input.GetAxis("Horizontal") * transform.localScale.x * -1), 0, maxAngle);
+			vel = Mathf.Clamp((vel + velocityChangeSpeed * Input.GetAxis ("Vertical")), 5, maxVelocity);
+		
 			//change explosion time
 
 
@@ -94,30 +97,35 @@ public class PlayerGrenade : MonoBehaviour {
 		Instantiate (grenadePrefab, new Vector2(transform.position.x + xOffset * transform.localScale.x, transform.position.y + yOffset), Quaternion.identity);
 	}
 
-	void TimerChange(Text timerTex, float timerApp)
+	void TextChange(Text timerTex, float timerApp)
 	{
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			explosionTime = ((explosionTime + 1) % maxExplosionTime);
+		if (Input.GetKey (KeyCode.E)) {
+			if (Input.GetKeyDown (KeyCode.Q)) {
+				explosionTime = ((explosionTime + 1) % maxExplosionTime);
 
-			timerTex.text = explosionTime.ToString ();
-			coroutineFinish = false;
+
+				timerTex.text = explosionTime.ToString ();
+				timer = timerApp;
+				//coroutineFinish = false;
+			}
 		}
 
-		//if time is expired text, disappears
+		if (Timer ()) {
+			timerTex.text = "";
+		}
 
-
-		if (!coroutineFinish)
-			StartCoroutine (TextEraser (timerTex, timerApp));
-		else
-			StopCoroutine (TextEraser(timerTex, timerApp));
 	}
 
-	IEnumerator TextEraser(Text textuwka, float time)
+	bool Timer()
 	{
-		yield return new WaitForSeconds(time);
+		if (timer > 0)
+		timer -= Time.deltaTime;
 
-		textuwka.text = "";
-		coroutineFinish = true;
+		if (timer <= 0) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/*void DrawTraject(Vector2 startPos, Vector2 startVelocity, float angle, float force){
