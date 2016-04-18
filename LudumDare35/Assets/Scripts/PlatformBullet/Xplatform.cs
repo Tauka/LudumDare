@@ -6,7 +6,7 @@ public class Xplatform : MonoBehaviour
 	bool canChnage = false;
 	bool canMove = true;
 
-	float maxX = 3;
+	public float maxX = 3;
 	float minX = 0.3f;
 	float origin = 1;
 	float offset = 0.01f;
@@ -14,7 +14,7 @@ public class Xplatform : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		maxX = transform.localScale.x + 3;
+		maxX = transform.localScale.x + maxX;
 		origin = transform.localScale.x;
 	}
 	
@@ -39,7 +39,7 @@ public class Xplatform : MonoBehaviour
 
 		if( canChnage )
 		{
-			InvokeRepeating("Scale", 0, 0.05f);
+			InvokeRepeating("Scale", 0, 0.005f);
 		}
 	}
 
@@ -94,6 +94,7 @@ public class Xplatform : MonoBehaviour
 		if( coll.tag == "Bullet" )
 		{
 			canChnage = true;
+			Destroy(coll.gameObject);
 		}
 
 		if( coll.tag == "Platform" )

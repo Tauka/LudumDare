@@ -14,7 +14,7 @@ public class Zplatform : MonoBehaviour
 	bool flyNeg = false;
 
 	float origin = 0f;
-	float offset = 0.5f;
+	public float offset = 0.5f;
 
 	public float force = 8;
 
@@ -166,7 +166,9 @@ public class Zplatform : MonoBehaviour
 		if( coll.tag == "Bullet" )
 		{
 			canChnage = true;
+			Destroy(coll.gameObject);
 		}
+
 
 		if( coll.tag == "Platform" && Input.GetKey(KeyCode.RightArrow))
 		{

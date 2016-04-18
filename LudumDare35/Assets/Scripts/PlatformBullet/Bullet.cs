@@ -13,21 +13,14 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-//		if(Input.GetAxisRaw("Horizontal") > 0)
-//		{
-//			rb.velocity = new Vector2( speed, 0 );
-//		}
-//		else if(Input.GetAxisRaw("Horizontal") < 0)
-//		{
-//			rb.velocity = new Vector2( -speed, 0 );
-//		}
+		Destroy(this.gameObject, 3);
 	}
 
-	void OnCollisionEnter2D(Collision2D coll)
+	void OnColliderEnter2D(Collider2D coll)
 	{
-		if( coll.gameObject.tag == "Platform" )
+		if( coll.tag == "Platform" )
 		{
-//			Destroy(this.gameObject, 0);
+			Destroy(this.gameObject);
 		}
 	}
 }

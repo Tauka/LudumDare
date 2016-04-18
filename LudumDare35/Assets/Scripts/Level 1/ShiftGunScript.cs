@@ -7,11 +7,11 @@ public class ShiftGunScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if (collider.CompareTag("Player"))
+		if (collider.tag == "Player")
 		{
-			collider.gameObject.SetActive(true);
+			obstacle.SetActive(true);
 			//obstacle.enabled = true;
-
+			collider.gameObject.GetComponent<PlayerShoot>().enabled = true;
 			Destroy (this.gameObject);
 		}
 	}

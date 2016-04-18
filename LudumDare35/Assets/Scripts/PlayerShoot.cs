@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviour {
 	public float bulletOffsetX;
 	public float bulletOffsetY;
 
-	float projectileForwardForce = 50f;
+	public float projectileForwardForce = 50f;
 
 	float lastShot = 0f;
 	float fireRate = 1f;

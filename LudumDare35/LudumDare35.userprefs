@@ -1,16 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\TextOutline.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlatformBullet\Zplatform.cs">
     <Files>
-      <File FileName="Assets\Scripts\TextOutline.cs" Line="78" Column="2" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CheckDeath.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Pause.cs" Line="30" Column="51" />
-      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="32" Column="35" />
-      <File FileName="Assets\Scripts\CheckDeath.cs" Line="25" Column="26" />
->>>>>>> d0ce2d512f42e1ff68ff58070ead2757d1f0daa7
+      <File FileName="Assets\Scripts\PlatformBullet\Yplatform.cs" Line="137" Column="1" />
+      <File FileName="Assets\Scripts\PlatformBullet\Xplatform.cs" Line="97" Column="29" />
+      <File FileName="Assets\Scripts\Controller.cs" Line="17" Column="30" />
+      <File FileName="Assets\Scripts\PlatformBullet\Zplatform.cs" Line="17" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
