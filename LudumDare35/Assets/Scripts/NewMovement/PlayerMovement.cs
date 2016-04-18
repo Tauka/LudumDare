@@ -12,9 +12,16 @@ public class PlayerMovement : MonoBehaviour {
 	//public Transform pointTrans;
 	public float weirdXOffset;
 	public float vertSpeed;
+	public float maxVertSpeed = 0;
+	public float minVertSpeed = 0;
+	public bool grounded;
+	public float groundY;
+	public bool isThereGround;
+	public float preGroundLength;
 	//Transform[] children;
 	Animator anim;
 	//float side = 0;
+	//float vert;
 
 	public bool facingR = true;
 
@@ -32,10 +39,37 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update()
 	{
-		vertSpeed = rb.velocity.y;
-		anim.SetFloat ("Speed", rb.velocity.y);
+
+		if (rb.velocity.y != 0)
+			vertSpeed = rb.velocity.y;
+		
+		//vertSpeed = rb.velocity.y;
+
+		if (maxVertSpeed < rb.velocity.y) {
+			maxVertSpeed = rb.velocity.y;
+		}
+
+
+
+		if (minVertSpeed > rb.velocity.y) {
+			minVertSpeed = rb.velocity.y;
+		}
+
+		anim.SetFloat ("Speed", vertSpeed);
 
 		anim.SetBool ("Grounded", CheckGround ());
+		grounded = CheckGround ();
+
+		anim.SetFloat ("DistanceToGround", transform.position.y - groundY);
+		Debug.Log (transform.position.y - groundY);
+
+		Debug.Log (anim.GetCurrentAnimatorStateInfo(0).ToString());
+
+		isThereGround = IsThereGroundAfterLength (preGroundLength);
+
+		//
+
+		Debug.DrawLine (transform.GetChild(6).position, new Vector3(transform.GetChild(6).position.x, -1 * raycastLength, 0));
 
 		//change side
 
@@ -119,13 +153,23 @@ public class PlayerMovement : MonoBehaviour {
 
 	bool CheckGround()
 	{
-		RaycastHit2D hit = Physics2D.Raycast (transform.position, Vector2.down, raycastLength, LayerMask.GetMask("Ground"));
+		RaycastHit2D hit = Physics2D.Raycast (transform.GetChild(6).position, Vector2.down, raycastLength, LayerMask.GetMask("Ground"));
 
 		if (hit.collider != null) 
 		{
 			//Debug.Log (hit);
 				return true;
 
+		}
+
+		return false;
+	}
+
+	bool IsThereGroundAfterLength(float length)
+	{
+		if (transform.position.y - length <= 0)
+		{
+			return true;
 		}
 
 		return false;
