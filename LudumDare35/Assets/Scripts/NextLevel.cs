@@ -3,7 +3,7 @@ using System.Collections;
 
 public class NextLevel : MonoBehaviour 
 {
-	public int loadLevel = 0;
+	public GameObject win;
 	// Use this for initialization
 //	void Start () 
 //	{
@@ -20,7 +20,22 @@ public class NextLevel : MonoBehaviour
 	{
 		if( other.tag == "Player" )
 		{
-			Application.LoadLevel(loadLevel);
+			win.SetActive(true);
 		}
+	}
+
+	public void Next()
+	{
+		Application.LoadLevel(Application.loadedLevel+1);
+	}
+
+	public void Retry()
+	{
+		Application.LoadLevel(Application.loadedLevel);
+	}
+
+	public void MainMenu()
+	{
+		Application.LoadLevel(0);
 	}
 }

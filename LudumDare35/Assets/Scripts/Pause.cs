@@ -36,4 +36,9 @@ public class Pause : MonoBehaviour
 	{
 		Application.Quit();
 	}
+
+	public void Restart()
+	{
+		Application.LoadLevel(Application.loadedLevel);
+	}
 }
