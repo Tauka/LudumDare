@@ -1,0 +1,519 @@
+fileFormatVersion: 2
+guid: c81ece8940870c644b102e356a9ad11f
+timeCreated: 1460991338
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BG_tiles 1_0
+    21300002: BG_tiles 1_1
+    21300004: BG_tiles 1_2
+    21300006: BG_tiles 1_3
+    21300008: BG_tiles 1_4
+    21300010: BG_tiles 1_5
+    21300012: BG_tiles 1_6
+    21300014: BG_tiles 1_7
+    21300016: BG_tiles 1_8
+    21300018: BG_tiles 1_9
+    21300020: BG_tiles 1_10
+    21300022: BG_tiles 1_11
+    21300024: BG_tiles 1_12
+    21300026: BG_tiles 1_13
+    21300028: BG_tiles 1_14
+    21300030: BG_tiles 1_15
+    21300032: BG_tiles 1_16
+    21300034: BG_tiles 1_17
+    21300036: BG_tiles 1_18
+    21300038: BG_tiles 1_19
+    21300040: BG_tiles 1_20
+    21300042: BG_tiles 1_21
+    21300044: BG_tiles 1_22
+    21300046: BG_tiles 1_23
+    21300048: BG_tiles 1_24
+    21300050: BG_tiles 1_25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 500
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: BG_tiles 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4286
+        width: 514
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -110, y: 110.69336}
+        - {x: -110, y: -109.30664}
+        - {x: 110, y: -109.30664}
+        - {x: 110, y: 110.69336}
+    - name: BG_tiles 1_1
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 4286
+        width: 515
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.94, y: 110.69336}
+        - {x: -109.94, y: -109.30664}
+        - {x: 111.06, y: -109.30664}
+        - {x: 111.06, y: 110.69336}
+    - name: BG_tiles 1_2
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 4286
+        width: 516
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.95331, y: 110.69336}
+        - {x: -109.95331, y: -109.30664}
+        - {x: 111.04669, y: -109.30664}
+        - {x: 111.04669, y: 110.69336}
+    - name: BG_tiles 1_3
+      rect:
+        serializedVersion: 2
+        x: 2164
+        y: 4054
+        width: 790
+        height: 546
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 169.3067, y: 71.706665}
+        - {x: 169.3067, y: 116.706665}
+        - {x: 168.3067, y: 117.706665}
+        - {x: -167.6933, y: 117.706665}
+        - {x: -168.6933, y: 116.706665}
+        - {x: -168.6933, y: 71.706665}
+        - {x: -166.6933, y: 69.706665}
+        - {x: -130.6933, y: 69.706665}
+        - {x: -130.6933, y: -114.293335}
+        - {x: -128.6933, y: -116.293335}
+        - {x: 130.3067, y: -116.293335}
+        - {x: 132.3067, y: -114.293335}
+        - {x: 132.3067, y: 69.706665}
+        - {x: 167.3067, y: 69.706665}
+    - name: BG_tiles 1_4
+      rect:
+        serializedVersion: 2
+        x: 3236
+        y: 3937
+        width: 696
+        height: 700
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 148.69336, y: 150.78674}
+        - {x: -146.30664, y: 150.78674}
+        - {x: -148.30664, y: 148.78674}
+        - {x: -148.30664, y: -146.21326}
+        - {x: -145.30664, y: -149.21326}
+        - {x: 146.69336, y: -149.21326}
+        - {x: 149.69336, y: -147.21326}
+        - {x: 149.69336, y: 149.78674}
+    - name: BG_tiles 1_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3604
+        width: 512
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.5, y: 111.206665}
+        - {x: -109.5, y: -109.793335}
+        - {x: 109.5, y: -109.793335}
+        - {x: 109.5, y: 111.206665}
+    - name: BG_tiles 1_6
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 3604
+        width: 513
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.44, y: 111.206665}
+        - {x: -109.44, y: -109.793335}
+        - {x: 110.56, y: -109.793335}
+        - {x: 110.56, y: 111.206665}
+    - name: BG_tiles 1_7
+      rect:
+        serializedVersion: 2
+        x: 1363
+        y: 3604
+        width: 516
+        height: 515
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.95331, y: 111.206665}
+        - {x: -109.95331, y: -109.793335}
+        - {x: 111.04669, y: -109.793335}
+        - {x: 111.04669, y: 111.206665}
+    - name: BG_tiles 1_8
+      rect:
+        serializedVersion: 2
+        x: 2171
+        y: 2875
+        width: 780
+        height: 778
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 167.29333, y: 165.16675}
+        - {x: 165.29333, y: 167.16675}
+        - {x: -165.70667, y: 167.16675}
+        - {x: -166.70667, y: 166.16675}
+        - {x: -166.70667, y: -164.83325}
+        - {x: -165.70667, y: -165.83325}
+        - {x: 165.29333, y: -165.83325}
+        - {x: 167.29333, y: -163.83325}
+    - name: BG_tiles 1_9
+      rect:
+        serializedVersion: 2
+        x: 3196
+        y: 2875
+        width: 777
+        height: 782
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 167.12671, y: 165.16675}
+        - {x: 165.12671, y: 167.16675}
+        - {x: -164.87329, y: 167.16675}
+        - {x: -165.87329, y: 166.16675}
+        - {x: -165.87329, y: -166.83325}
+        - {x: 166.12671, y: -166.83325}
+        - {x: 167.12671, y: -165.83325}
+    - name: BG_tiles 1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2921
+        width: 512
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.5, y: 110.793335}
+        - {x: -109.5, y: -110.206665}
+        - {x: 109.5, y: -110.206665}
+        - {x: 109.5, y: 110.793335}
+    - name: BG_tiles 1_11
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 2921
+        width: 515
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -109.793335, y: 110.793335}
+        - {x: -109.793335, y: -110.206665}
+        - {x: 111.206665, y: -110.206665}
+        - {x: 111.206665, y: 110.793335}
+    - name: BG_tiles 1_12
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 2921
+        width: 518
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -110.30664, y: 110.793335}
+        - {x: -110.30664, y: -110.206665}
+        - {x: 111.69336, y: -110.206665}
+        - {x: 111.69336, y: 110.793335}
+    - name: BG_tiles 1_13
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1726
+        width: 1029
+        height: 1027
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -219.4, y: 219.9267}
+        - {x: -219.4, y: -219.0733}
+        - {x: 220.6, y: -219.0733}
+        - {x: 220.6, y: 219.9267}
+    - name: BG_tiles 1_14
+      rect:
+        serializedVersion: 2
+        x: 1618
+        y: 2125
+        width: 80
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.15332, y: 66.16669}
+        - {x: -17.15332, y: -64.83331}
+        - {x: 17.84668, y: -64.83331}
+        - {x: 17.84668, y: 66.16669}
+    - name: BG_tiles 1_15
+      rect:
+        serializedVersion: 2
+        x: 1731
+        y: 2125
+        width: 305
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.94, y: 66.16669}
+        - {x: -64.94, y: -64.83331}
+        - {x: 66.06, y: -64.83331}
+        - {x: 66.06, y: 66.16669}
+    - name: BG_tiles 1_16
+      rect:
+        serializedVersion: 2
+        x: 2068
+        y: 2125
+        width: 305
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65.15332, y: 66.16669}
+        - {x: -65.15332, y: -64.83331}
+        - {x: 65.84668, y: -64.83331}
+        - {x: 65.84668, y: 66.16669}
+    - name: BG_tiles 1_17
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 2125
+        width: 303
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.58667, y: 66.16669}
+        - {x: -64.58667, y: -19.833313}
+        - {x: 22.41333, y: -64.83331}
+        - {x: 65.41333, y: -64.83331}
+        - {x: 65.41333, y: 66.16669}
+    - name: BG_tiles 1_18
+      rect:
+        serializedVersion: 2
+        x: 2746
+        y: 2125
+        width: 304
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.87329, y: 66.16669}
+        - {x: -64.87329, y: -64.83331}
+        - {x: 66.12671, y: -64.83331}
+        - {x: 66.12671, y: 66.16669}
+    - name: BG_tiles 1_19
+      rect:
+        serializedVersion: 2
+        x: 3083
+        y: 2125
+        width: 303
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.58667, y: 66.16669}
+        - {x: -64.58667, y: -64.83331}
+        - {x: 65.41333, y: -64.83331}
+        - {x: 65.41333, y: 66.16669}
+    - name: BG_tiles 1_20
+      rect:
+        serializedVersion: 2
+        x: 3421
+        y: 2050
+        width: 304
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.87329, y: 82.16669}
+        - {x: -64.87329, y: 47.166687}
+        - {x: -63.87329, y: 46.166687}
+        - {x: -64.87329, y: 16.166687}
+        - {x: -64.87329, y: -80.83331}
+        - {x: -61.87329, y: -80.83331}
+        - {x: 66.12671, y: 47.166687}
+        - {x: 66.12671, y: 82.16669}
+    - name: BG_tiles 1_21
+      rect:
+        serializedVersion: 2
+        x: 3758
+        y: 2125
+        width: 305
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65.08667, y: 66.16669}
+        - {x: -65.08667, y: -64.83331}
+        - {x: 65.91333, y: -64.83331}
+        - {x: 65.91333, y: 66.16669}
+    - name: BG_tiles 1_22
+      rect:
+        serializedVersion: 2
+        x: 4096
+        y: 2125
+        width: 304
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.87329, y: 66.16669}
+        - {x: -64.87329, y: -64.83331}
+        - {x: 66.12671, y: -64.83331}
+        - {x: 66.12671, y: 66.16669}
+    - name: BG_tiles 1_23
+      rect:
+        serializedVersion: 2
+        x: 4433
+        y: 2125
+        width: 305
+        height: 304
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65.08667, y: 66.16669}
+        - {x: -65.08667, y: -64.83331}
+        - {x: 65.91333, y: -64.83331}
+        - {x: 65.91333, y: 66.16669}
+      - - {x: -16.08667, y: 19.166687}
+        - {x: -18.08667, y: 17.166687}
+        - {x: -18.08667, y: -15.833313}
+        - {x: -16.08667, y: -17.833313}
+        - {x: 16.91333, y: -17.833313}
+        - {x: 18.91333, y: -15.833313}
+        - {x: 18.91333, y: 17.166687}
+        - {x: 16.91333, y: 19.166687}
+    - name: BG_tiles 1_24
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1378
+        width: 138
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11.600006, y: -34.053345}
+        - {x: -7.600006, y: -34.053345}
+        - {x: -7.600006, y: -31.053345}
+        - {x: -10.600006, y: -30.053345}
+        - {x: -12.600006, y: -32.053345}
+      - - {x: -29.600006, y: 34.946655}
+        - {x: -29.600006, y: -13.053345}
+        - {x: -20.600006, y: -22.053345}
+        - {x: 19.399994, y: -22.053345}
+        - {x: 30.399994, y: -5.0533447}
+        - {x: 30.399994, y: 22.946655}
+        - {x: 19.399994, y: 34.946655}
+    - name: BG_tiles 1_25
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 1331
+        width: 229
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.940002, y: 63.89337}
+        - {x: -48.940002, y: 59.89337}
+        - {x: -48.940002, y: -52.10663}
+        - {x: -27.940002, y: -61.10663}
+        - {x: 34.059998, y: -61.10663}
+        - {x: 50.059998, y: -40.10663}
+        - {x: 50.059998, y: 46.89337}
+        - {x: 14.059998, y: 63.89337}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

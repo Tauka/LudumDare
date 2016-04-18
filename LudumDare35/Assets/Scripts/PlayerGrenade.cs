@@ -24,6 +24,7 @@ public class PlayerGrenade : MonoBehaviour {
 	LineRenderer line;
 	PlayerMovement movement;
 	Text timerText;
+	Animator anim;
 	public float timer = 0;
 
 	bool coroutineFinish = true;
@@ -36,9 +37,10 @@ public class PlayerGrenade : MonoBehaviour {
 		//trajectory = GetComponent<DrawTrajectory> ();
 		line = GetComponent<LineRenderer> ();
 		movement = GetComponent<PlayerMovement> ();
+		anim = GetComponent<Animator> ();
 
 		//we can do this, since there's only one child, and only on grandchild
-		timerText = this.transform.GetChild(0).GetComponentInChildren<Text>();
+		timerText = this.transform.GetChild(11).GetComponentInChildren<Text>();
 
 	}
 
@@ -49,6 +51,9 @@ public class PlayerGrenade : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		anim.SetFloat ("AimAngle", throwAngle);
+
 		Aim ();
 		TextChange (timerText, timerAppearTime);
 	}
@@ -57,10 +62,14 @@ public class PlayerGrenade : MonoBehaviour {
 	{
 		if (Input.GetKey (KeyCode.E)) {
 
+			//
+			anim.SetBool("Aiming", true);
+
 			//enable trajectory line
 			line.enabled = true;
 
 			//disable movement
+			Debug.Log("You pressed E!");
 			rb.velocity = Vector2.zero;
 			movement.enabled = false;
 
@@ -68,7 +77,7 @@ public class PlayerGrenade : MonoBehaviour {
 
 
 			//if (Input.GetKey (KeyCode.A)) {
-			throwAngle = Mathf.Clamp((throwAngle + angleChangeSpeed * Input.GetAxis("Horizontal") * transform.localScale.x * -1), 0, maxAngle);
+			throwAngle = Mathf.Clamp((throwAngle + angleChangeSpeed * Input.GetAxis("Horizontal") * transform.localScale.x * -1), maxAngle * -1, maxAngle);
 			vel = Mathf.Clamp((vel + velocityChangeSpeed * Input.GetAxis ("Vertical")), 5, maxVelocity);
 		
 			//change explosion time
@@ -78,6 +87,8 @@ public class PlayerGrenade : MonoBehaviour {
 			//	throwAngle = (throwAngle - angleChangeSpeed) % minAngle;
 			//}
 		} else if (Input.GetKeyUp (KeyCode.E)) {
+
+			anim.SetBool("Aiming", false);
 
 			//disable trajectory
 			line.enabled = false;

@@ -21,10 +21,17 @@ public class GrenadeController : MonoBehaviour {
 	void Awake () {
 		rb = GetComponent<Rigidbody2D> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		grenadeScript = player.GetComponent<PlayerGrenade>();
-		traj = player.GetComponent<LineRenderer> ();
-		trajScript = player.GetComponent<DrawTrajectory> ();
+		grenadeScript = player.GetComponent<PlayerGrenade> ();
+
+		//Debug.Log (player);
+		//traj = player.GetComponent<LineRenderer> ();
+		//trajScript = player.GetComponent<DrawTrajectory> ();
 		explosion = GetComponents<CircleCollider2D> ();
+	}
+
+	void Start()
+	{
+		
 	}
 	
 	// Update is called once per frame
@@ -32,7 +39,7 @@ public class GrenadeController : MonoBehaviour {
 
 		if (once) {
 
-			Debug.Log (grenadeScript.throwAngle);
+			//Debug.Log (grenadeScript.throwAngle);
 
 			//rb.AddForce (new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce, Mathf.Sin (Mathf.Deg2Rad * grenadeScript.throwAngle) * throwForce));
 
@@ -46,7 +53,7 @@ public class GrenadeController : MonoBehaviour {
 
 	void Update()
 	{
-		if (grenadeScript.explosionTime < currentTime) {
+		if (grenadeScript.explosionTime > currentTime) {
 			currentTime += Time.deltaTime;
 		} else {
 			foreach (CircleCollider2D expl in explosion) {

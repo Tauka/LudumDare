@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CheckDeath.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
+     <Compile Include="Assets\Scripts\Death.cs" />
      <Compile Include="Assets\Scripts\DrawTrajectory.cs" />
      <Compile Include="Assets\Scripts\FrameRateCap.cs" />
      <Compile Include="Assets\Scripts\GrenadeController.cs" />
@@ -94,7 +95,6 @@
      <Compile Include="Assets\Scripts\PlayerShoot.cs" />
      <Compile Include="Assets\Scripts\TextChange.cs" />
      <Compile Include="Assets\Scripts\TextOutline.cs" />
-     <Compile Include="Assets\tauka.cs" />
      <None Include="Assets\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
  <Reference Include="UnityEngine.UI">

@@ -5,10 +5,12 @@ public class DrawTrajectory : MonoBehaviour {
 
 
 	PlayerGrenade grenade;
-	public float velocity;
+	//public float velocity;
 	Rigidbody2D rb;
 	LineRenderer line;
 	Renderer rend;
+	PlayerMovement movement;
+	public float groundLevel;
 	[HideInInspector] public Vector2[] positions;
 
 	//Draw texture for circlic trajectory
@@ -20,11 +22,12 @@ public class DrawTrajectory : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		line = this.gameObject.GetComponent<LineRenderer>();
 		rend = GetComponent<Renderer>();
+		movement = GetComponent<PlayerMovement> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		DrawTraject (new Vector2 (transform.position.x + grenade.xOffset * transform.localScale.x, transform.position.y + grenade.yOffset), new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenade.throwAngle) * grenade.vel * transform.localScale.x, Mathf.Sin (Mathf.Deg2Rad * grenade.throwAngle) * grenade.vel));
+		DrawTraject (new Vector2 (transform.position.x + (grenade.xOffset) * transform.localScale.x, transform.position.y + grenade.yOffset), new Vector2(Mathf.Cos (Mathf.Deg2Rad * grenade.throwAngle) * grenade.vel * transform.localScale.x, Mathf.Sin (Mathf.Deg2Rad * grenade.throwAngle) * grenade.vel));
 	}
 
 	void DrawTraject(Vector2 startPos, Vector2 velocity){
@@ -36,7 +39,7 @@ public class DrawTrajectory : MonoBehaviour {
 		float checkLineY = startPos.y;
 		int numOfVert = 0;
 		Vector2 velTemp = velocity;
-		while (checkLineY >= 0) 
+		while (checkLineY >= groundLevel) 
 		{
 			numOfVert++;
 			velTemp += a * Time.fixedDeltaTime;
@@ -55,7 +58,7 @@ public class DrawTrajectory : MonoBehaviour {
 			line.SetPosition(i, new Vector3(pos.x, pos.y, 0));
 			positions [i] = new Vector2 (pos.x, pos.y);
 
-			rend.material.mainTextureScale = new Vector2((int)Vector2.Distance(positions[i], positions[(i + 1) % positions.Length]), 1);
+			//rend.material.mainTextureScale = new Vector2((int)Vector2.Distance(positions[i], positions[(i + 1) % positions.Length]), 1);
 
 			//Rect rect = new Rect (pos.x, pos.y, 100, 100);
 			//rect.width = 2;
