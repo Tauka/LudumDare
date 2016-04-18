@@ -9,12 +9,20 @@ public class PlayerMovement : MonoBehaviour {
 	public float speed;
 	public float jumpForce;
 	public float raycastLength;
+	//public Transform pointTrans;
+	public float weirdXOffset;
+	public float vertSpeed;
+	//Transform[] children;
+	Animator anim;
+	//float side = 0;
 
-	[HideInInspector]public bool facingR = true;
+	public bool facingR = true;
 
 	void Awake()
 	{
 		rb = GetComponent<Rigidbody2D> ();
+		//children = gameObject.GetComponentsInChildren<Transform>();
+		anim = GetComponent<Animator>();
 	}
 
 	// Use this for initialization
@@ -22,9 +30,27 @@ public class PlayerMovement : MonoBehaviour {
 	
 	}
 
+	void Update()
+	{
+		vertSpeed = rb.velocity.y;
+		anim.SetFloat ("Speed", rb.velocity.y);
+
+		anim.SetBool ("Grounded", CheckGround ());
+
+		//change side
+
+	}
+
 	void FixedUpdate()
 	{
 		//float h = Input.GetAxis ("Horizontal");
+
+		if (rb.velocity.x != 0) {
+			anim.SetBool ("IsWalking", true);
+		} else {
+			anim.SetBool ("IsWalking", false);
+		}
+
 
 		float side = 0;
 		if (Input.GetKey (KeyCode.A)) {
@@ -38,23 +64,27 @@ public class PlayerMovement : MonoBehaviour {
 		Movement (side);
 		Jump ();
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 
 	void Flip(float h)
 	{
-		if( h>0 )
+
+
+		if( h>0 && !facingR)
 		{
-			transform.localScale = new Vector3(1,1,1);
+			transform.localScale = new Vector3 (1, 1, 1);
+			transform.position = new Vector3 (transform.position.x + weirdXOffset, transform.position.y, transform.position.z);
+
+
+			//foreach
 			facingR = true;
 		}
-		if( h<0 )
+		if( h<0 && facingR)
 		{
-			transform.localScale = new Vector3(-1,1,1);
+
+			transform.localScale = new Vector3 (-1, 1, 1);
+			transform.position = new Vector3 (transform.position.x - weirdXOffset, transform.position.y, transform.position.z);
+			//Rescale (pointTrans.position.x);
+		//	transform.localScale = new Vector3(-1,1,1);
 			facingR = false;
 		}
 	}
