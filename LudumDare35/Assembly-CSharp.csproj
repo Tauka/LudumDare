@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\DrawTrajectory.cs" />
      <Compile Include="Assets\Scripts\FrameRateCap.cs" />
+     <Compile Include="Assets\Scripts\GameStarter.cs" />
      <Compile Include="Assets\Scripts\GrenadeController.cs" />
      <Compile Include="Assets\Scripts\Level 1\ShiftGunScript.cs" />
      <Compile Include="Assets\Scripts\Level 1\ShiftableObstacleGrow.cs" />
