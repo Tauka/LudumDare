@@ -1,11 +1,17 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlatformBullet\Zplatform.cs">
     <Files>
       <File FileName="Assets\Scripts\PlatformBullet\Yplatform.cs" Line="137" Column="1" />
       <File FileName="Assets\Scripts\PlatformBullet\Xplatform.cs" Line="97" Column="29" />
       <File FileName="Assets\Scripts\Controller.cs" Line="17" Column="30" />
       <File FileName="Assets\Scripts\PlatformBullet\Zplatform.cs" Line="17" Column="3" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\NewMovement\PlayerMovement.cs">
+    <Files>
+      <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="38" Column="3" />
+>>>>>>> fc788c239525474b749058e0d1b09050a49b4d0f
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
