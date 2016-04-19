@@ -20,10 +20,10 @@ public class GrenadeController : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		rb = GetComponent<Rigidbody2D> ();
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find("Professor!_withComponents");
 		grenadeScript = player.GetComponent<PlayerGrenade> ();
 
-		//Debug.Log (player);
+		Debug.Log (player);
 		//traj = player.GetComponent<LineRenderer> ();
 		//trajScript = player.GetComponent<DrawTrajectory> ();
 		explosion = GetComponents<CircleCollider2D> ();
@@ -31,7 +31,12 @@ public class GrenadeController : MonoBehaviour {
 
 	void Start()
 	{
-		
+		if (player == null)
+		{
+			player = GameObject.Find("Professor!_withComponents(Clone)");
+			grenadeScript = player.GetComponent<PlayerGrenade> ();
+		}
+
 	}
 	
 	// Update is called once per frame
@@ -59,10 +64,14 @@ public class GrenadeController : MonoBehaviour {
 			foreach (CircleCollider2D expl in explosion) {
 				if (expl.isTrigger) {
 
+					currentTime = 0;
 					//change tag
 					this.gameObject.tag = "Bullet";
 
 					expl.radius = explosionRadius;
+
+
+					//Destroy(this.gameObject);
 				}
 			}
 		}

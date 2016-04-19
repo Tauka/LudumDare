@@ -14,7 +14,7 @@ public class Yplatform : MonoBehaviour
 	public float maxY = 3;
 	public float minY = 0.3f;
 	float origin = 1;
-	float offset = 0.05f;
+	public float offset = 0.05f;
 
 
 	// Use this for initialization

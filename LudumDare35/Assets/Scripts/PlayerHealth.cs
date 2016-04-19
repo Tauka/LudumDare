@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour {
 	float lastPos;
 	Rigidbody2D rb;
 	int count = 0;
+	public GameObject gameover;
 
 	public float deathHeight = 8;
 	// Use this for initialization
@@ -33,6 +34,8 @@ public class PlayerHealth : MonoBehaviour {
 		{
 			Debug.Log("Dead");
 			Destroy(this.gameObject);
+			this.gameObject.GetComponent<Death>().enabled = true;
+			gameover.SetActive(true);
 		}
 	}
 }

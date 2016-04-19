@@ -5,6 +5,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	public GameObject bullet;
 	public float bulletOffsetX;
+	public float bulletLeftOffsetX;
 	public float bulletOffsetY;
 
 	public float projectileForwardForce = 50f;
@@ -36,7 +37,10 @@ public class PlayerShoot : MonoBehaviour {
 	{
 		GameObject go = null;
 
-		go = Instantiate (bullet, new Vector2 (transform.position.x + bulletOffsetX, transform.position.y + bulletOffsetY), Quaternion.identity) as GameObject ;
+		if (pm.facingR)
+			go = Instantiate (bullet, new Vector2 (transform.position.x + bulletOffsetX, transform.position.y + bulletOffsetY), Quaternion.identity) as GameObject ;
+		else
+			go = Instantiate (bullet, new Vector2 (transform.position.x - bulletLeftOffsetX, transform.position.y + bulletOffsetY), Quaternion.identity) as GameObject ;
 
 		if( pm.facingR )
 		{

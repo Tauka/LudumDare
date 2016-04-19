@@ -1,20 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerGrenade.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GrenadeController.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="55" Column="3" />
-      <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GrenadeController.cs" Line="24" Column="57" />
+      <File FileName="Assets\Scripts\GrenadeController.cs" Line="74" Column="8" />
+      <File FileName="Assets\Scripts\PlayerGrenade.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\DrawTrajectory.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Pause.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Pause.cs" Line="43" Column="3" />
-      <File FileName="Assets\Scripts\NextLevel.cs" Line="40" Column="3" />
+      <File FileName="Assets\Scripts\Level 1\ShiftGunScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerHealth.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\CheckDeath.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlatformBullet\Yplatform.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\NextLevel.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\NewMovement\PlayerMovement.cs" Line="1" Column="1" />
->>>>>>> ab8f3623eb07e2a816f560971c593285ed11a808
+      <File FileName="Assets\Scripts\PlayerShoot.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Death.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
